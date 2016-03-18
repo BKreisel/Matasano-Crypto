@@ -10,11 +10,11 @@ def single_xor(key,cipher):
     return result
 
 
-def isEnglish(string):
+def isEnglish(string, threshold=7):
 
     string = string.upper()
 
-    english_freq = ["E","T","A","O","I","N","S","H"]
+    english_freq = ["E","T","A","O","I","N","S","H"," "]
     symbols = ["+",",","`","~","!","@","*"]
     words = ["THE"," BE "," TO "," OF ","AND"," A "," IN "]
 
@@ -40,7 +40,7 @@ def isEnglish(string):
     if not has_word:
         score -=2
 
-    if score < 7:
+    if score < threshold:
         return False
     return True
 
