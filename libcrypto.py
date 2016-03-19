@@ -1,4 +1,5 @@
 from collections import Counter
+from binascii import hexlify
 
 def hexstr_xor(hex1, hex2):
     """XOR's hex strings of equal length"""
@@ -57,3 +58,18 @@ def isEnglish(string, threshold=7):
     if score < threshold:
         return False
     return True
+
+
+def key_xor(key, string):
+
+    key = key.encode("ascii")
+    string = string.encode("ascii")
+    result = bytearray()
+    idx = 0
+    for char in string:
+        x = idx % len(key)
+        xor = key[x] ^ char
+        result.append(xor)
+        idx += 1
+
+    return hexlify(result)
