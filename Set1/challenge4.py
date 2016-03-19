@@ -1,12 +1,12 @@
-from Set1.challenge3 import single_xor
-from Set1.challenge3 import isEnglish
+from libcrypto import char_xor
+from libcrypto import isEnglish
 
 
 def main():
 
     for line in open("../assets/inputS1C4.txt","r"):
         for i in range(1,int("ff",16)):
-            xor_bytes = single_xor(i,line.rstrip())
+            xor_bytes = char_xor(i,line.rstrip())
 
             try:
                 xor_string = xor_bytes.decode("ascii")
