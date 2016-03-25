@@ -99,4 +99,22 @@ def split_blocks(key, data):
             blocks.append(block)
             block = bytearray()
         block.append(data[ctr])
+
     return blocks[1:]
+
+
+def pkcs7(input, blockSize=8):
+
+    verify_bytearray(input)
+
+    input_length = len(input)
+
+    if input_length < blockSize:
+        pad = blockSize - input_length
+    else:
+        pad = blockSize % input_length
+
+    for char in range(0, pad):
+        input.append(pad)
+
+    return input
